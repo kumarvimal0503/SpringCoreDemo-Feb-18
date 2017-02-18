@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="a" class="com.spring.demo.A">
+	
+	</bean>
+	
+	
+	<bean id="b" class="com.spring.demo.B">
+		<!-- <constructor-arg ref="a" />
+		<constructor-arg value="I love my India" /> -->
+		<property name="a" ref="a" />
+		<property name="message" value="I love my India" />
+	</bean>
+	
+	<!-- <bean id="student" class="com.spring.demo.Student">
+		<property name="name" value="Abhijeet"  />
+		<property name="subjects">
+			<list>
+				<value>Java</value>
+				<value>C</value>	
+				<value>C++</value>	
+			</list>
+		</property>
+	</bean> -->
+	
+	<bean id="java" class="com.spring.demo.Subject">
+		<property name="subjectName" value="Java"></property>
+	</bean>
+	<bean id="spring" class="com.spring.demo.Subject">
+		<property name="subjectName" value="Spring"></property>
+	</bean>
+	<bean id="hibernate" class="com.spring.demo.Subject">
+		<property name="subjectName" value="Hibernate"></property>
+	</bean>
+	
+	
+	<bean id="student2" class="com.spring.demo.Student">
+		<property name="name" value="Sameer"  />
+		<property name="subjects">
+			<list>
+				<!-- <value>RDBMS</value>
+				<value>Oracle</value>	
+				<value>MongoDB</value>	
+				<idref bean="java"/>
+				<idref bean="spring"/>
+				<idref bean="hibernate"/>
+				<bean id="java"></bean>
+				<bean id="spring"></bean>
+				<bean id="hibernate"></bean>
+				<ref local="java" />
+				<ref local="spring"/>
+				<ref local="hibernate"/> -->
+				
+				<ref bean="java" />
+				<ref bean="spring" />
+				<ref bean="hibernate" />
+				
+			</list>
+		</property>
+	</bean>
+
+</beans>
