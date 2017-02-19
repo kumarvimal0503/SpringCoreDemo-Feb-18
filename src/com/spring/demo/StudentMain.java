@@ -13,6 +13,8 @@ public class StudentMain {
 		Student student = (Student) context.getBean("student2");
 		System.out.println("Name: "+student.getName());
 		student.showSubjects();
+		student.showEmail();
+		student.showSubjectMarks();
 	}
 
 }

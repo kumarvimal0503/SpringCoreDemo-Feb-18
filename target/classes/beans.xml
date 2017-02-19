@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans 
-       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">  
+	
+	<context:annotation-config />
+	
+	<context:component-scan base-package="com.spring.annotation.demo" />
 	
 	<bean id="a" class="com.spring.demo.A">
 	
@@ -61,6 +68,35 @@
 				
 			</list>
 		</property>
+		
+		<property name="emailIds">
+			<set>
+				<value>kumar.vimal0503@gmail.com</value>	
+				<value>vimakuma@cisco.com</value>	
+				<value>vimal.kumar@zensar.com</value>			
+			</set>
+		</property>
+		
+		<!-- <property name="subjectMarks">
+			<map>
+				<entry key="Java" value="60" />
+				<entry key="Spring" value="70" />
+				<entry key="Hibernate" value="80" />
+			</map>	
+		</property> -->
+		
+		<property name="subjectMarks">
+			<map>
+				<entry key-ref="java" value="60" />
+				<entry key-ref="spring" value="70" />
+				<entry key-ref="hibernate" value="80" />
+			</map>	
+		</property>
+		
 	</bean>
 
+	<bean id="myBean" class="com.spring.demo.MyBean" init-method="myInit" destroy-method="myDestroy">
+		<property name="i" value="10"></property>
+	</bean>
+	
 </beans>
